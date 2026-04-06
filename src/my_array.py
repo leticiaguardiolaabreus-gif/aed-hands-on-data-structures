@@ -10,28 +10,41 @@ class MyArray(Array):
         self.data: list[int] = []
 
     def append(self, value: int) -> None:
-        raise NotImplementedError
+        return self.data.append(value)
 
     def get(self, index: int) -> int:
-        raise NotImplementedError
+        if index < 0 or index >= len(self.data):
+            raise IndexError
+        else:
+            return self.data[index]
+
 
     def set(self, index: int, value: int) -> None:
-        raise NotImplementedError
+        if index < 0 or index >= len(self.data):
+            raise IndexError
+        else:
+            self.data[index] = value
 
     def remove(self, value: int) -> None:
-        raise NotImplementedError
+        if value in self.data:
+            self.data.remove(value)
+        else:
+            raise ValueError
 
     def insert(self, index: int, value: int) -> None:
-        raise NotImplementedError
+        if index <0 or index > len(self.data):
+            raise IndexError
+        else:
+            self.data.insert(index, value)
 
     def __len__(self) -> int:
-        raise NotImplementedError
+        return len(self.data)
 
     def __getitem__(self, index: int) -> int:
-        raise NotImplementedError
+        return self.get(index)
 
     def __setitem__(self, index: int, value: int) -> None:
-        raise NotImplementedError
+        return self.set(index, value)
 
     def __repr__(self) -> str:
-        raise NotImplementedError
+        return str(self.data)
